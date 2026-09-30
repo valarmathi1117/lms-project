@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { Eye, EyeOff } from "lucide-react";
 import { createClient } from "@/lib/supabase";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,6 +14,7 @@ export default function SignupPage() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [role, setRole] = useState("student");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -62,7 +64,7 @@ export default function SignupPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <div className="grid min-h-screen lg:grid-cols-2">
-        <div className="hidden bg-slate-900 lg:flex lg:flex-col lg:justify-between p-12 text-white">
+        <div className="hidden bg-slate-900 p-12 text-white lg:flex lg:flex-col lg:justify-between">
           <div>
             <div className="flex items-center gap-2">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 font-bold">
@@ -73,6 +75,7 @@ export default function SignupPage() {
                 LearnHub
               </span>
             </div>
+
             <div className="mt-32 max-w-lg">
               <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-blue-400">
                 Start your learning journey
@@ -97,6 +100,7 @@ export default function SignupPage() {
             © 2026 LearnHub. All rights reserved.
           </p>
         </div>
+
         <div className="flex items-center justify-center px-6 py-12">
           <div className="w-full max-w-md">
             <div className="mb-8 flex items-center justify-center gap-2 lg:hidden">
@@ -108,6 +112,7 @@ export default function SignupPage() {
                 LearnHub
               </span>
             </div>
+
             <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
 
               <div className="mb-8">
@@ -121,6 +126,7 @@ export default function SignupPage() {
               </div>
 
               <form onSubmit={handleSignup} className="space-y-5">
+
                 <div className="space-y-2">
                   <Label htmlFor="fullName">
                     Full name
@@ -136,6 +142,7 @@ export default function SignupPage() {
                     className="h-11"
                   />
                 </div>
+
                 <div className="space-y-2">
                   <Label htmlFor="email">
                     Email address
@@ -151,26 +158,45 @@ export default function SignupPage() {
                     className="h-11"
                   />
                 </div>
+
                 <div className="space-y-2">
                   <Label htmlFor="password">
                     Password
                   </Label>
 
-                  <Input
-                    id="password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Create a password"
-                    required
-                    minLength={6}
-                    className="h-11"
-                  />
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      type={showPassword ? "text" : "password"}
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="Create a password"
+                      required
+                      minLength={6}
+                      className="h-11 pr-11"
+                    />
+
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 transition hover:text-slate-700"
+                      aria-label={
+                        showPassword ? "Hide password" : "Show password"
+                      }
+                    >
+                      {showPassword ? (
+                        <EyeOff size={20} />
+                      ) : (
+                        <Eye size={20} />
+                      )}
+                    </button>
+                  </div>
 
                   <p className="text-xs text-slate-500">
                     Password must contain at least 6 characters.
                   </p>
                 </div>
+
                 <div className="space-y-2">
                   <Label>
                     Choose your role
@@ -220,11 +246,13 @@ export default function SignupPage() {
 
                   </div>
                 </div>
+
                 {message && (
                   <div className="rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-700">
                     {message}
                   </div>
                 )}
+
                 <Button
                   type="submit"
                   disabled={loading}
@@ -233,6 +261,7 @@ export default function SignupPage() {
                   {loading ? "Creating account..." : "Create account"}
                 </Button>
               </form>
+
               <div className="mt-8 border-t border-slate-200 pt-6 text-center">
                 <p className="text-sm text-slate-500">
                   Already have an account?{" "}
