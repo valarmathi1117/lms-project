@@ -452,10 +452,10 @@ export default function LearnCoursePage() {
   type="button"
   onClick={() => markComplete(lesson.id)}
   disabled={isCompleted}
-  className={`shrink-0 rounded-lg border px-4 py-2 text-xs font-semibold transition-colors ${
+  className={`shrink-0 self-start rounded-md border px-3 py-2 text-xs font-medium transition-all duration-200 ${
     isCompleted
       ? "cursor-default border-green-200 bg-green-50 text-green-700"
-      : "border-slate-200 bg-white text-slate-700 hover:border-blue-300 hover:bg-blue-50 hover:text-blue-600"
+      : "border-slate-300 bg-white text-slate-600 hover:border-blue-400 hover:bg-blue-50 hover:text-blue-600"
   }`}
 >
   {isCompleted ? "✓ Completed" : "Mark as Complete"}
