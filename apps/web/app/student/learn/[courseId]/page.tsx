@@ -448,22 +448,32 @@ export default function LearnCoursePage() {
                       </div>
 
                       
-                      <button
-                        type="button"
-                        onClick={() =>
-                          markComplete(lesson.id)
-                        }
-                        disabled={isCompleted}
-                        className={`shrink-0 rounded-lg px-5 py-3 text-sm font-semibold ${
-                          isCompleted
-                            ? "cursor-not-allowed bg-green-100 text-green-700"
-                            : "bg-slate-900 text-white hover:bg-blue-600"
-                        }`}
-                      >
-                        {isCompleted
-                          ? "Completed ✓"
-                          : "Mark Complete"}
-                      </button>
+                     <button
+  type="button"
+  onClick={() => markComplete(lesson.id)}
+  disabled={isCompleted}
+  className={`shrink-0 inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-200 ${
+    isCompleted
+      ? "cursor-default bg-green-600 text-white shadow-sm"
+      : "bg-slate-900 text-white shadow-sm hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-md active:translate-y-0"
+  }`}
+>
+  {isCompleted ? (
+    <>
+      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white/20 text-xs">
+        ✓
+      </span>
+      Completed
+    </>
+  ) : (
+    <>
+      <span className="flex h-5 w-5 items-center justify-center rounded-full border border-white/40 text-xs">
+        ✓
+      </span>
+      Mark as Complete
+    </>
+  )}
+</button>
 
                     </div>
 
