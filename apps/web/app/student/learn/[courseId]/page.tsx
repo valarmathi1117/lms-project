@@ -113,7 +113,7 @@ export default function LearnCoursePage() {
 
     setCourse(courseData);
 
-    // IMPORTANT: video_url is included here
+    
     const { data: lessonData, error: lessonError } =
       await supabase
         .from("lessons")
