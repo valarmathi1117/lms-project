@@ -242,7 +242,7 @@ export default function HomePage() {
 
           <div className="mt-10 grid gap-7 md:grid-cols-3">
 
-            {/* ================= COURSE 1 ================= */}
+            
             <Reveal>
               <div className="group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
 
@@ -288,7 +288,7 @@ export default function HomePage() {
             </Reveal>
 
 
-            {/* ================= COURSE 2 ================= */}
+           
             <Reveal>
               <div className="group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
 
@@ -334,7 +334,7 @@ export default function HomePage() {
             </Reveal>
 
 
-            {/* ================= COURSE 3 ================= */}
+            
             <Reveal>
               <div className="group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
 
@@ -381,8 +381,6 @@ export default function HomePage() {
 
           </div>
 
-
-          {/* Mobile View All */}
           <div className="mt-8 text-center sm:hidden">
             <Link
               href="/courses"
@@ -394,9 +392,6 @@ export default function HomePage() {
 
         </div>
       </section>
-
-
-      {/* ================= CTA ================= */}
       <section className="px-6 py-20">
 
         <Reveal>
